@@ -1,0 +1,43 @@
+[build]
+  base = "/"
+  publish = "dist/"
+  command = "npm run build"
+
+[build.processing]
+  skip_processing = false
+[build.processing.css]
+  bundle = true
+  minify = true
+[build.processing.js]
+  bundle = true
+  minify = true
+[build.processing.html]
+  pretty_urls = true
+[build.processing.images]
+  compress = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+    Content-Security-Policy = "default-src 'none'; script-src 'self' 'unsafe-eval' https://cdn.snipcart.com https://d33wubrfki0l68.cloudfront.net https://cdnjs.cloudflare.com https://unpkg.com 'sha256-V+/U3qbjHKP0SaNQhMwYNm62gfWX4QHwPJ7We1PXokI=' 'sha256-V0sEZY6fKAlO/0HNYcc6fu3BPfbjEBtAqIWX2ZoDewA='; connect-src 'self' https://cdn.snipcart.com https://app.snipcart.com https://d33wubrfki0l68.cloudfront.net; img-src 'self' https://d33wubrfki0l68.cloudfront.net; style-src 'self' https://cdn.snipcart.com https://fonts.googleapis.com https://d33wubrfki0l68.cloudfront.net; base-uri 'self'; font-src 'self' https://d33wubrfki0l68.cloudfront.net https://fonts.googleapis.com https://fonts.gstatic.com; frame-src https://open.spotify.com; form-action 'self' https://d33wubrfki0l68.cloudfront.net https://formspree.io;"
+    # Permissions-Policy= "encrypted-media=(src); accelerometer=(); ambient-light-sensor=(); autoplay=(); camera=(); fullscreen=(self); geolocation=(); gyroscope=(); magnetometer=(); microphone=(); midi=(); payment=(self); picture-in-picture=(); speaker=(); sync-xhr=(); usb=(); vr=();"
+    # Feature Policy is to be renamed to Permissions-Policy, however it is widely unsupported in majority of browsers.
+    # Browser payment may be used.
+    Feature-Policy = "accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; camera 'none'; encrypted-media 'src'; fullscreen 'self'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; payment 'self'; picture-in-picture 'none'; speaker 'none'; sync-xhr 'none'; usb 'none'; vr 'none';"
+    Set-Cookie = "SameSite=Strict; Secure"
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/index"
+  to = "/"
+  status = 301
+  force = true
